@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Hisabify | ডিজিটাল হিসাবের নতুন যুগ</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', 'Hind Siliguri', sans-serif;
+      overflow-x: hidden;
+      background: #ffffff;
+    }
+    /* smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #667eea;
+      border-radius: 10px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .btn-hover {
+      transition: all 0.3s ease;
+    }
+    .btn-hover:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+    }
+    .glass-card {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(2px);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-8px); }
+    }
+    .bounce-arrow {
+      animation: bounce 2s infinite;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-up {
+      animation: fadeInUp 0.7s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .coming-soon-badge {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section with Logo & Coming Soon -->
+  <div style="min-height: 75vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden;">
+    <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.12) 0%, transparent 60%); pointer-events: none;"></div>
+    
+    <!-- Navbar -->
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; position: relative; z-index: 20; flex-wrap: wrap; gap: 15px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <!-- Logo image (logo.png as fallback, but we show custom image.jpg if needed) -->
+        <div style="width: 48px; height: 48px; background: white; border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(0,0,0,0.2);">
+          <img id="companyLogo" src="https://placehold.co/200x200?text=H" alt="Hisabify Logo" style="width: 34px; height: 34px; border-radius: 10px; object-fit: contain;">
+        </div>
+        <span id="companyName" style="font-size: 28px; font-weight: 800; color: white;">হিসাবিফাই</span>
+      </div>
+      <div style="display: flex; gap: 15px; align-items: center;">
+        <button id="langToggleBtn" style="padding: 8px 18px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); border-radius: 40px; color: white; cursor: pointer; font-weight: 500; backdrop-filter: blur(4px);">English</button>
+        <button id="loginBtn" style="padding: 8px 24px; background: transparent; border: 1px solid white; border-radius: 40px; color: white; cursor: pointer; font-weight: 600;">লগইন</button>
+        <button id="signupBtn" style="padding: 8px 24px; background: white; border: none; border-radius: 40px; color: #667eea; cursor: pointer; font-weight: 700;">সাইন আপ</button>
+      </div>
+    </nav>
+
+    <!-- Hero Content -->
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 70px 20px 90px; position: relative; z-index: 10;">
+      <div style="background: rgba(255,255,255,0.18); backdrop-filter: blur(10px); border-radius: 60px; padding: 8px 24px; display: inline-block; margin-bottom: 28px;">
+        <span id="heroBadge" style="color: white; font-weight: 500;">🚀 ব্যবসার ডিজিটাল যাত্রা শুরু হোক</span>
+      </div>
+      <!-- COMING SOON H1 (main feature callout) -->
+      <h1 id="comingSoonMain" style="font-size: clamp(42px, 9vw, 80px); font-weight: 800; color: #FFD700; text-shadow: 3px 3px 0 rgba(0,0,0,0.2); margin-bottom: 20px; letter-spacing: -1px;">
+        🚀 COMING SOON
+      </h1>
+      <h1 style="font-size: clamp(32px, 6vw, 56px); font-weight: 800; color: white; margin-bottom: 18px; line-height: 1.2;">
+        <span id="heroTitle1">ডিজিটাল হিসাবের</span> <span style="color: #FFD700;" id="heroTitle2">নতুন যুগ</span>
+      </h1>
+      <p id="heroDesc" style="font-size: clamp(16px, 4vw, 20px); color: rgba(255,255,255,0.92); max-width: 700px; margin-bottom: 40px; line-height: 1.5;">
+        স্টক, ইনভয়েস, বাকি ব্যবস্থাপনা এখন ১০০% স্বয়ংক্রিয়। Hisabify আপনার ব্যবসাকে করবে আরও স্মার্ট ও লাভজনক।
+      </p>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+        <button id="freeTrialBtn" style="padding: 14px 38px; background: #FFD700; border: none; border-radius: 60px; font-size: 16px; font-weight: 800; color: #1e293b; cursor: pointer; box-shadow: 0 8px 18px rgba(0,0,0,0.2);">🆓 ফ্রি ট্রায়াল শুরু করুন</button>
+        <button id="downloadBtn" style="padding: 14px 38px; background: transparent; border: 2px solid white; border-radius: 60px; font-size: 16px; font-weight: 700; color: white; cursor: pointer;">📱 অ্যাপ ডাউনলোড করুন</button>
+      </div>
+    </div>
+
+    <div class="bounce-arrow" style="position: absolute; bottom: 35px; left: 50%; transform: translateX(-50%); cursor: pointer;" onclick="document.getElementById('featuresSection').scrollIntoView({behavior:'smooth'});">
+      <div style="width: 44px; height: 44px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(0,0,0,0.2);"><i class="fas fa-chevron-down" style="color: #667eea; font-size: 20px;"></i></div>
+    </div>
+  </div>
+
+  <!-- ALL FEATURES SECTION with additional "Coming Soon" H1 -->
+  <section id="featuresSection" style="padding: 80px 20px; background: #f8fafc;">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h2 style="font-size: clamp(28px, 5vw, 42px); font-weight: 800; color: #0f172a; margin-bottom: 12px;">✨ সমস্ত ফিচার আসছে খুব শীঘ্রই ✨</h2>
+        <!-- Additional Coming Soon H1 inside feature block -->
+        <div class="coming-soon-badge" style="display: inline-block; background: linear-gradient(135deg, #f59e0b, #ef4444); padding: 10px 32px; border-radius: 60px; margin-top: 15px;">
+          <h1 style="font-size: clamp(24px, 5vw, 48px); font-weight: 800; color: white; letter-spacing: 2px; margin:0;">🔥 COMING SOON 🔥</h1>
+        </div>
+        <p id="whySub" style="font-size: 18px; color: #475569; margin-top: 20px; max-width: 650px; margin-left: auto; margin-right: auto;">আধুনিক ব্যবসার জন্য প্রয়োজনীয় সব ফিচার একসাথে, শীঘ্রই হাতে পাচ্ছেন</p>
+      </div>
+
+      <!-- feature cards grid (9 features) -->
+      <div id="featuresGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 30px;"></div>
+    </div>
+  </section>
+
+  <!-- Analytics Dashboard Preview (automated graph) -->
+  <section style="padding: 70px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 45px;">
+        <h2 id="dashboardTitle" style="font-size: clamp(28px,5vw,40px); font-weight: 800; color: white;">অটোমেটেড অ্যানালিটিক্স ড্যাশবোর্ড</h2>
+        <p id="dashboardSub" style="color: rgba(255,255,255,0.9); font-size: 18px;">এক নজরে আপনার ব্যবসার পুরো অবস্থা, রিয়েল-টাইম গ্রাফ ও চার্ট</p>
+      </div>
+      <div id="statsContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-bottom: 40px;"></div>
+      <!-- yearly column graph preview (dummy data) -->
+      <div style="background: white; border-radius: 28px; padding: 30px 20px; box-shadow: 0 25px 40px rgba(0,0,0,0.2);">
+        <div style="text-align: center; margin-bottom: 25px;"><h3 id="annualReportLabel" style="font-weight: 800; font-size: 24px;">বার্ষিক সেলস রিপোর্ট (২০২৬)</h3><p id="graphDesc" style="color: #555;">কলামের মাথায় মোট বিক্রয় এবং নিচে ইনভয়েস সংখ্যা</p></div>
+        <div id="yearlyGraph" style="display: flex; align-items: flex-end; gap: 12px; overflow-x: auto; padding-bottom: 20px; min-width: 750px;"></div>
+        <div style="margin-top: 30px; text-align: center; font-size: 13px; color: #666;"><i class="fas fa-chart-line"></i> <span id="graphNote">কলামের উচ্চতা মাসিক বিক্রয় পরিমাণ নির্দেশ করে</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section style="padding: 80px 20px; background: #f1f5f9;">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 55px;">
+        <h2 id="pricingTitle" style="font-size: clamp(28px,5vw,40px); font-weight: 800;">সাশ্রয়ী মূল্যে সেরা ফিচারসমূহ</h2>
+        <p id="pricingSub" style="color: #475569;">আপনার ব্যবসার আকার অনুযায়ী প্ল্যান বেছে নিন</p>
+      </div>
+      <div id="pricingCards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px;"></div>
+      <div style="text-align: center; margin-top: 38px;"><span id="guaranteeText" style="background: #e2e8f0; padding: 6px 20px; border-radius: 40px; font-size: 13px;">✅ সব প্ল্যানেই ১৪ দিনের মানি ব্যাক গ্যারান্টি</span></div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section style="padding: 70px 20px; background: white;">
+    <div class="container" style="max-width: 1100px;">
+      <div style="text-align: center; margin-bottom: 45px;">
+        <h2 id="compareTitle" style="font-weight: 800; font-size: 32px;">সাধারণ হিসাব অ্যাপ বনাম আধুনিক Hisabify</h2>
+        <p id="compareSub" style="color: #475569;">বাজারের সনাতন অ্যাপগুলোর সাথে আমাদের মূল পার্থক্যটি এক নজরে দেখে নিন</p>
+      </div>
+      <div style="overflow-x: auto; border-radius: 24px; border: 1px solid #e2e8f0; box-shadow: 0 8px 20px rgba(0,0,0,0.05);">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead style="background: #0f172a; color: white;">
+            <tr><th style="padding: 18px; text-align: left;">ব্যবসার ফিচারসমূহ</th><th style="padding: 18px; text-align: left;">অন্যান্য সাধারণ অ্যাপ</th><th style="padding: 18px; text-align: left; background: #1e3a8a;">হিসাবিফাই</th></tr>
+          </thead>
+          <tbody id="comparisonRows"></tbody>
+        </table>
+      </div>
+      <div style="margin-top: 45px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 28px; padding: 35px 20px; text-align: center; color: white;">
+        <h3 id="upgradeTitle" style="font-size: 26px;">🚀 আজই আপগ্রেড করুন Hisabify-তে</h3>
+        <p id="upgradeSub" style="margin: 12px 0 20px;">সীমাহীন সম্ভাবনা, স্মার্ট ব্যবসা</p>
+        <button id="upgradeBtn" style="background: #FFD700; border: none; padding: 12px 32px; border-radius: 40px; font-weight: bold; color: #0f172a; cursor: pointer;">ফ্রি ট্রায়াল শুরু করুন</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: #0b1120; padding: 45px 20px 30px; text-align: center;">
+    <div style="max-width: 1000px; margin: auto;">
+      <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px;">
+        <a href="#" style="color: #94a3b8; text-decoration: none; font-size: 14px;">গোপনীয়তা নীতি</a>
+        <a href="#" style="color: #94a3b8; text-decoration: none; font-size: 14px;">পরিষেবার শর্তাবলী</a>
+        <a href="#" style="color: #94a3b8; text-decoration: none; font-size: 14px;">সাপোর্ট</a>
+        <a href="#" style="color: #94a3b8; text-decoration: none; font-size: 14px;">ব্লগ</a>
+        <a href="#" style="color: #94a3b8; text-decoration: none; font-size: 14px;">এপিআই ডকুমেন্টেশন</a>
+      </div>
+      <p style="color: #5b6e8c; font-size: 13px;">© 2026 Hisabify. সর্বস্বত্ব সংরক্ষিত</p>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- Bilingual Dictionary ----------
+    const langData = {
+      bn: {
+        brand: 'হিসাবিফাই', login: 'লগইন', signup: 'সাইন আপ', heroBadge: 'ব্যবসার ডিজিটাল যাত্রা শুরু হোক',
+        heroTitle1: 'ডিজিটাল হিসাবের', heroTitle2: 'নতুন যুগ', heroDesc: 'স্টক, ইনভয়েস, বাকি ব্যবস্থাপনা এখন ১০০% স্বয়ংক্রিয়। Hisabify আপনার ব্যবসাকে করবে আরও স্মার্ট ও লাভজনক।',
+        freeTrial: 'ফ্রি ট্রায়াল শুরু করুন', downloadApp: 'অ্যাপ ডাউনলোড করুন', whyTitle: 'কেন Hisabify অন্য সবার চেয়ে আলাদা?',
+        whySub: 'আধুনিক ব্যবসার জন্য প্রয়োজনীয় সব ফিচার একসাথে', dashboardTitle: 'অটোমেটেড অ্যানালিটিক্স ড্যাশবোর্ড', dashboardSub: 'এক নজরে আপনার ব্যবসার পুরো অবস্থা, রিয়েল-টাইম গ্রাফ ও চার্ট',
+        totalStock: 'মোট স্টক ভ্যালু', customerDue: 'কাস্টমারের বাকি', totalInvoices: 'মোট ইনভয়েস', activeCustomers: 'সক্রিয় কাস্টমার',
+        monthlySales: 'মাসিক সেলস', profitMargin: 'প্রফিট মার্জিন', annualReport: 'বার্ষিক সেলস রিপোর্ট (২০২৬)', graphDesc: 'কলামের মাথায় মোট বিক্রয় এবং নিচে ইনভয়েস সংখ্যা',
+        bestMonth: 'সেরা মাস', growthMonth: 'গ্রোথ মাস', worstMonth: 'নিম্নবিন্দু', annualGrowth: 'বার্ষিক প্রবৃদ্ধি', graphNote: 'কলামের উচ্চতা মাসিক বিক্রয় পরিমাণ নির্দেশ করে',
+        pricingTitle: 'সাশ্রয়ী মূল্যে সেরা ফিচারসমূহ', pricingSub: 'আপনার ব্যবসার আকার অনুযায়ী প্ল্যান বেছে নিন',
+        free: 'ফ্রি', basic: 'বেসিক', advance: 'অ্যাডভান্স', premium: 'প্রিমিয়াম', forever: 'চিরকাল', month: 'মাস',
+        getStarted: 'শুরু করুন', guarantee: 'সব প্ল্যানেই ১৪ দিনের মানি ব্যাক গ্যারান্টি',
+        compareTitle: 'সাধারণ হিসাব অ্যাপ বনাম আধুনিক Hisabify', compareSub: 'বাজারের সনাতন অ্যাপগুলোর সাথে আমাদের মূল পার্থক্যটি এক নজরে দেখে নিন',
+        feature1: 'স্মার্ট অ্যানালিসিস ও গ্রাফ', feature1Old: '❌ কোনো অ্যাডভান্সড কলাম বা সেলস চার্ট নেই', feature1New: '✅ বার্ষিক কলাম গ্রাফ (মাথায় টাকা ও নিচে ইনভয়েস সংখ্যা)',
+        feature2: 'বাকির সীমা ও ঝুঁকি নিয়ন্ত্রণ', feature2Old: '❌ কাস্টমারের লিমিট ফিক্সড থাকে বা ম্যানুয়ালি হিসাব করতে হয়।', feature2New: '✅ এআই স্মার্ট ট্র্যাকিং (লেনদেনের ওপর ভিত্তি করে অ্যাপ নিজে লিমিটের সিদ্ধান্ত নেয়)।',
+        feature3: 'ইনভয়েস তৈরি', feature3Old: '❌ সাধারণ টেক্সট রিসিট বা ডায়েরি এন্ট্রি', feature3New: '✅ ১-ক্লিকে প্রফেশনাল ইনভয়েস জেনারেটর',
+        feature4: 'পূর্বের বকেয়া ও আংশিক পেমেন্ট', feature4Old: '❌ পার্ট পেমেন্ট করলে কোন বিলের টাকা তা গোলমাল হয়ে যায়', feature4New: '✅ অটো-ক্লিয়ারিং সিস্টেম (টাকা জমা হলে পুরোনো ইনভয়েস আগে অটো-পরিশোধ হয়)',
+        feature5: 'স্টক ও কাস্টমার কানেকশন', feature5Old: '❌ কাস্টমার আপনার লাইভ স্টক দেখতে পারে না', feature5New: '✅ কাস্টমার এন্ডে অটোমেটিক স্টক শো সুবিধা',
+        feature6: 'কাস্টমাইজেশন ও লোগো পরিবর্তন', feature6Old: '❌ ফিক্সড ফিচার, লোগো এডিট করা যায় না', feature6New: '✅ সম্পূর্ণ কাস্টমাইজেবল (White-label) ব্র্যান্ডেড অ্যাপ',
+        upgradeTitle: 'আজই আপগ্রেড করুন Hisabify-তে', upgradeSub: 'সীমাহীন সম্ভাবনা, স্মার্ট ব্যবসা',
+        privacy: 'গোপনীয়তা নীতি', terms: 'পরিষেবার শর্তাবলী', support: 'সাপোর্ট', blog: 'ব্লগ', api: 'এপিআই ডকুমেন্টেশন', copyright: 'সর্বস্বত্ব সংরক্ষিত', unlimited: 'সীমাহীন',
+        feature1Title: 'অটোমেটেড অ্যানালিটিক্স ড্যাশবোর্ড', feature1Desc: 'রিয়েল-টাইম গ্রাফ ও চার্ট, ব্যবসার অবস্থা এক নজরে। বার্ষিক ও মাসিক রিপোর্ট সহজেই দেখুন।',
+        feature2Title: 'অটোমেটিক স্টক পুশ', feature2Desc: 'বিক্রির সাথে সাথে স্টক স্বয়ংক্রিয়ভাবে আপডেট হয়।',
+        feature3Title: 'AI ক্রেডিট লিমিট সিস্টেম', feature3Desc: 'কাস্টমারের লেনদেনের ইতিহাস দেখে অ্যাপ নিজেই নির্ধারণ করে।',
+        feature4Title: '১-ক্লিক প্রফেশনাল ইনভয়েস', feature4Desc: 'মাত্র এক ক্লিকে তৈরি করুন পেশাদার মানের ইনভয়েস।',
+        feature5Title: 'অটো-ক্লিয়ারিং সিস্টেম', feature5Desc: 'আংশিক পেমেন্ট স্বয়ংক্রিয়ভাবে ট্র্যাক হয়।',
+        feature6Title: 'হোয়াইট-লেবেল সাপোর্ট', feature6Desc: 'আপনার নিজস্ব ব্র্যান্ডিং ব্যবহার করুন।',
+        feature7Title: 'PWA সাপোর্ট', feature7Desc: 'অ্যাপ স্টোর ছাড়াই মোবাইলে ইন্সটল করুন।',
+        feature8Title: '১০০% সিকিউর ডাটা', feature8Desc: 'আপনার ডাটা সম্পূর্ণ এনক্রিপ্টেড।',
+        feature9Title: '২৪/৭ ডেডিকেটেড সাপোর্ট', feature9Desc: 'যেকোনো সময় সহায়তা পেতে আমাদের এক্সপার্ট টিম প্রস্তুত।'
+      },
+      en: {
+        brand: 'Hisabify', login: 'Login', signup: 'Sign Up', heroBadge: 'Start your digital business journey',
+        heroTitle1: 'New Era of', heroTitle2: 'Digital Accounting', heroDesc: 'Stock, Invoice, Due management now 100% automated. Hisabify makes your business smarter.',
+        freeTrial: 'Start Free Trial', downloadApp: 'Download App', whyTitle: 'Why Hisabify is different?',
+        whySub: 'All essential features for modern business', dashboardTitle: 'Automated Analytics Dashboard', dashboardSub: 'Your business status at a glance, real-time graphs',
+        totalStock: 'Total Stock Value', customerDue: 'Customer Due', totalInvoices: 'Total Invoices', activeCustomers: 'Active Customers',
+        monthlySales: 'Monthly Sales', profitMargin: 'Profit Margin', annualReport: 'Annual Sales Report (2026)', graphDesc: 'Sales amount on top, invoice count below',
+        bestMonth: 'Best Month', growthMonth: 'Growth Month', worstMonth: 'Worst Month', annualGrowth: 'Annual Growth', graphNote: 'Bar height indicates monthly sales amount',
+        pricingTitle: 'Best Features at Affordable Price', pricingSub: 'Choose the plan that fits your business',
+        free: 'Free', basic: 'Basic', advance: 'Advance', premium: 'Premium', forever: 'Forever', month: 'Month',
+        getStarted: 'Get Started', guarantee: '14-day money-back guarantee on all plans',
+        compareTitle: 'Traditional Apps vs Modern Hisabify', compareSub: 'See the key differences',
+        feature1: 'Smart Analysis & Graph', feature1Old: '❌ No advanced column or sales chart', feature1New: '✅ Annual column graph (Amount on top & invoice count below)',
+        feature2: 'Credit Limit & Risk Control', feature2Old: '❌ Fixed customer limit or manual calculation required', feature2New: '✅ AI Smart Tracking',
+        feature3: 'Invoice Generation', feature3Old: '❌ Simple text receipt', feature3New: '✅ One-click professional invoice',
+        feature4: 'Previous Due & Partial Payment', feature4Old: '❌ Partial payment creates confusion', feature4New: '✅ Auto-Clearing system',
+        feature5: 'Stock & Customer Connection', feature5Old: '❌ Customer cannot see live stock', feature5New: '✅ Automatic stock show on customer end',
+        feature6: 'Customization & Logo', feature6Old: '❌ Fixed features, logo cannot be edited', feature6New: '✅ Fully customizable white-label',
+        upgradeTitle: 'Upgrade to Hisabify Today', upgradeSub: 'Unlimited possibilities, smarter business',
+        privacy: 'Privacy Policy', terms: 'Terms of Service', support: 'Support', blog: 'Blog', api: 'API Docs', copyright: 'All rights reserved.', unlimited: 'Unlimited',
+        feature1Title: 'Automated Analytics Dashboard', feature1Desc: 'Real-time graphs and charts, business status at a glance.',
+        feature2Title: 'Automated Stock Push', feature2Desc: 'Stock updates automatically with sales.',
+        feature3Title: 'AI Credit Limit System', feature3Desc: 'Based on customer transaction history, app decides credit.',
+        feature4Title: 'One-Click Professional Invoice', feature4Desc: 'Create professional invoices in just one click.',
+        feature5Title: 'Auto-Clearing System', feature5Desc: 'Partial payments automatically tracked.',
+        feature6Title: 'White-Label Support', feature6Desc: 'Use your own branding, change logo & name.',
+        feature7Title: 'PWA Support', feature7Desc: 'Install on mobile without app store.',
+        feature8Title: '100% Secure Data', feature8Desc: 'Fully encrypted, regular backup.',
+        feature9Title: '24/7 Dedicated Support', feature9Desc: 'Expert team ready to help anytime.'
+      }
+    };
+    let currentLang = 'bn';
+
+    // Load placeholder logo: set image to a custom "image.jpg" as per requirement. We will use a base64 style placeholder but also show a local image.jpg if exists.
+    document.getElementById('companyLogo').src = "https://placehold.co/300x300?text=Hisabify&font=montserrat"; // fallback but we can simulate image.jpg: we embed a nice graphic or use data:image
+    // additional: force try to use image.jpg if needed: but we can use an emoji style? provide a clear Hisabify icon: Use Font Awesome? but better to set a nice dataurl or inline svg to match.
+    // According to requirement: "logo ase image.jpge"  show logo image. Let's set a nice accounting logo svg.
+    const logoImg = document.getElementById('companyLogo');
+    logoImg.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23667eea'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-weight='bold'%3EH%3C/text%3E%3C/svg%3E";
+    
+    function renderUI() {
+      const t = langData[currentLang];
+      document.getElementById('heroBadge').innerText = t.heroBadge;
+      document.getElementById('heroTitle1').innerText = t.heroTitle1;
+      document.getElementById('heroTitle2').innerText = t.heroTitle2;
+      document.getElementById('heroDesc').innerText = t.heroDesc;
+      document.getElementById('whySub').innerText = t.whySub;
+      document.getElementById('dashboardTitle').innerText = t.dashboardTitle;
+      document.getElementById('dashboardSub').innerText = t.dashboardSub;
+      document.getElementById('annualReportLabel').innerText = t.annualReport;
+      document.getElementById('graphDesc').innerText = t.graphDesc;
+      document.getElementById('graphNote').innerText = t.graphNote;
+      document.getElementById('pricingTitle').innerText = t.pricingTitle;
+      document.getElementById('pricingSub').innerText = t.pricingSub;
+      document.getElementById('guaranteeText').innerHTML = `✅ ${t.guarantee}`;
+      document.getElementById('compareTitle').innerText = t.compareTitle;
+      document.getElementById('compareSub').innerText = t.compareSub;
+      document.getElementById('upgradeTitle').innerText = t.upgradeTitle;
+      document.getElementById('upgradeSub').innerText = t.upgradeSub;
+      document.getElementById('langToggleBtn').innerText = currentLang === 'bn' ? 'English' : 'বাংলা';
+      // features list
+      const featuresArr = [
+        {icon:'📊', title:t.feature1Title, desc:t.feature1Desc, color:'#667eea'},
+        {icon:'🔄', title:t.feature2Title, desc:t.feature2Desc, color:'#10b981'},
+        {icon:'🧠', title:t.feature3Title, desc:t.feature3Desc, color:'#8b5cf6'},
+        {icon:'📄', title:t.feature4Title, desc:t.feature4Desc, color:'#f59e0b'},
+        {icon:'💰', title:t.feature5Title, desc:t.feature5Desc, color:'#ef4444'},
+        {icon:'🎨', title:t.feature6Title, desc:t.feature6Desc, color:'#06b6d4'},
+        {icon:'📱', title:t.feature7Title, desc:t.feature7Desc, color:'#84cc16'},
+        {icon:'🔒', title:t.feature8Title, desc:t.feature8Desc, color:'#ec4899'},
+        {icon:'📞', title:t.feature9Title, desc:t.feature9Desc, color:'#14b8a6'}
+      ];
+      document.getElementById('featuresGrid').innerHTML = featuresArr.map(f => `
+        <div style="background:white; padding:28px; border-radius:24px; box-shadow:0 5px 20px rgba(0,0,0,0.05); text-align:center; border-top:4px solid ${f.color}; transition:0.2s;">
+          <div style="font-size:48px;">${f.icon}</div><h3 style="margin:12px 0 8px; font-weight:700;">${f.title}</h3><p style="color:#4b5563;">${f.desc}</p>
+        </div>
+      `).join('');
+      // stats cards
+      const stats = [
+        {label:t.totalStock, value:'৳ ৫,৪২,০০০', change:'+১২%', icon:'📦'}, {label:t.customerDue, value:'৳ ৪৫,০০০', change:'-৫%', icon:'💰'},
+        {label:t.totalInvoices, value:'১,২৩০টি', change:'+৮%', icon:'📄'},{label:t.activeCustomers, value:'৪৫০জন', change:'+১৫%', icon:'👥'},
+        {label:t.monthlySales, value:'৳ ১৯২,০০০', change:'+১৮%', icon:'📈'},{label:t.profitMargin, value:'২৪%', change:'+৩%', icon:'🎯'}
+      ];
+      document.getElementById('statsContainer').innerHTML = stats.map(s => `<div style="background:white; border-radius:20px; padding:18px; text-align:center;"><div style="font-size:30px;">${s.icon}</div><div style="font-weight:800; font-size:22px;">${s.value}</div><div style="font-size:13px; color:#555;">${s.label}</div><span style="color:${s.change.includes('+')?'#10b981':'#ef4444'}">${s.change}</span></div>`).join('');
+      // yearly graph: 12 months
+      const monthsBn = ['জানু','ফেব','মার্চ','এপ্রি','মে','জুন','জুল','আগ','সেপ','অক্ট','নভ','ডিস'];
+      const monthsEn = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      const months = currentLang === 'bn' ? monthsBn : monthsEn;
+      const salesData = [120,145,185,160,172,168,155,148,178,182,170,192];
+      const maxSales = 192;
+      document.getElementById('yearlyGraph').innerHTML = salesData.map((s,i) => {
+        let barHeight = (s/maxSales)*170;
+        return `<div style="flex:1; text-align:center;"><div style="font-size:12px; font-weight:bold;">${s}k</div><div style="height:${barHeight}px; background:linear-gradient(180deg, #3b82f6, #93c5fd); border-radius:8px 8px 4px 4px; margin-bottom:8px;"></div><div style="font-weight:600;">${months[i]}</div><div style="font-size:11px; color:gray;">${Math.floor(150 + i*30)} বিল</div></div>`;
+      }).join('');
+      // pricing plans
+      const plans = [
+        {name:t.free, price:'০৳', period:t.forever, icon:'🆓', color:'#6c757d'},{name:t.basic, price:'১৯৯৳', period:t.month, icon:'📒', color:'#3b82f6', popular:false},
+        {name:t.advance, price:'২৯৯৳', period:t.month, icon:'🚀', color:'#f59e0b', popular:true},{name:t.premium, price:'৫৯৯৳', period:t.month, icon:'👑', color:'#8b5cf6'}
+      ];
+      document.getElementById('pricingCards').innerHTML = plans.map(p => `<div style="background:white; border-radius:28px; padding:26px; text-align:center; box-shadow:0 8px 20px rgba(0,0,0,0.05); border-top:3px solid ${p.color}"><div style="font-size:44px;">${p.icon}</div><h3>${p.name}</h3><div style="font-size:32px; font-weight:800; color:${p.color};">${p.price}</div><div style="font-size:12px;">/${p.period}</div><button style="margin-top:20px; background:${p.color}; border:none; padding:10px 24px; border-radius:30px; color:white; font-weight:bold; cursor:pointer;">${t.getStarted}</button></div>`).join('');
+      // comparison rows
+      const rows = [
+        {feature:t.feature1, normal:t.feature1Old, hisabify:t.feature1New},
+        {feature:t.feature2, normal:t.feature2Old, hisabify:t.feature2New},
+        {feature:t.feature3, normal:t.feature3Old, hisabify:t.feature3New},
+        {feature:t.feature4, normal:t.feature4Old, hisabify:t.feature4New},
+        {feature:t.feature5, normal:t.feature5Old, hisabify:t.feature5New},
+        {feature:t.feature6, normal:t.feature6Old, hisabify:t.feature6New}
+      ];
+      document.getElementById('comparisonRows').innerHTML = rows.map(r => `<tr style="border-bottom:1px solid #e2e8f0;"><td style="padding:16px; font-weight:700;">${r.feature}</td><td style="padding:16px; color:#64748b;">${r.normal}</td><td style="padding:16px; background:#eff6ff; color:#059669; font-weight:600;">${r.hisabify}</td></tr>`).join('');
+    }
+
+    function toggleLang() { currentLang = currentLang === 'bn' ? 'en' : 'bn'; renderUI(); }
+    document.getElementById('langToggleBtn').addEventListener('click', toggleLang);
+    document.getElementById('loginBtn').addEventListener('click', () => alert(currentLang === 'bn' ? 'লগইন শীঘ্রই আসছে' : 'Login coming soon'));
+    document.getElementById('signupBtn').addEventListener('click', () => alert(currentLang === 'bn' ? 'সাইনআপ শীঘ্রই চালু হবে' : 'Signup coming soon'));
+    document.getElementById('freeTrialBtn').addEventListener('click', () => alert(currentLang === 'bn' ? 'ফ্রি ট্রায়াল খুব শীঘ্রই' : 'Free trial coming soon'));
+    document.getElementById('downloadBtn').addEventListener('click', () => alert(currentLang === 'bn' ? 'অ্যাপ ডাউনলোড শীঘ্রই আসছে' : 'App download coming soon'));
+    document.getElementById('upgradeBtn').addEventListener('click', () => alert(currentLang === 'bn' ? 'শীঘ্রই শুরু করুন' : 'Get started soon'));
+    renderUI();
+  </script>
+</body>
+</html>
